@@ -103,10 +103,8 @@ const (
 // height float64 — рост пользователя.
 func WalkingSpentCalories(action int, duration, weight, height float64) float64 {
     // ваш код здесь
- speedKmH := meanSpeed(action,duration)*kmhInMsec
- heightInMeters := height / cmInM
- walkCalories := (walkingCaloriesWeightMultiplier * weight + ((math.Pow(speedKmH,2)) / heightInMeters) * 
- walkingSpeedHeightMultiplier * weight * duration * minInH)
+ walkCalories := ((walkingCaloriesWeightMultiplier*weight + (math.Pow((meanSpeed(action, duration)*kmhInMsec), 2) / (height/cmInM)) *
+  walkingSpeedHeightMultiplier*weight) * duration * minInH)
  return walkCalories
 }
 
